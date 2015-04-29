@@ -1,0 +1,27 @@
+{
+    "name": "itestense/laravel-photogallery",
+    "description": "",
+    "authors": [
+        {
+            "name": "Paolo Niccolò Giubelli",
+            "email": "paoloniccolo.giubelli@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "intervention/image": "~2.2"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers",
+            "src/Itestense/LaravelPhotogallery/models",
+            "src/Itestense/LaravelPhotogallery/validators"
+        ],
+        "psr-0": {
+            "Itestense\\LaravelPhotogallery\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
