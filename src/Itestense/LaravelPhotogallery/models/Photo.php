@@ -11,4 +11,9 @@ class Photo extends \Eloquent
       'galleries_photos');
   }
 
+  public static function getAllRandom()
+  {
+    return self::all()->shuffle();
+  }
+
 }
