@@ -19,7 +19,17 @@ class CreatePhotosTable extends Migration {
 			$table->string('description')->nullable();
 			$table->string('path');
 			$table->timestamps();
-		});
+    });
+
+    Schema::create('galleries_photos', function($table){
+      $table->increments('id');
+      $table->integer('gallery_id')->unsigned();
+      $table->integer('photo_id')->unsigned();
+
+      $table->foreign('gallery_id')->references('id')->on('galleries');
+      $table->foreign('photo_id')->references('id')->on('photos');
+    });
+
 	}
 
 	/**
@@ -28,7 +38,12 @@ class CreatePhotosTable extends Migration {
 	 * @return void
 	 */
 	public function down()
-	{
+  {
+    Schema::table('galleries_photos', function($table){
+      $table->dropForeign('galleries_photos_gallery_id_foreign');
+      $table->dropForeign('galleries_photos_photo_id_foreign');
+    });
+    Schema::drop('galleries_photos');
 		Schema::drop('photos');
 	}
 
