@@ -44,7 +44,7 @@ class GalleryPhotosController extends \BaseController {
 		if($validation->passes())
 		{
       $filename = str_random(10).time() .".". \Input::file('path')->getClientOriginalExtension();
-			$destination = public_path()."/uploads/photos/";
+			$destination = public_path().\Config::get('upload_dir')."/";
       $upload = \Input::file('path')->move($destination, $filename);
       $img = \Image::make($destination.$filename);
       $formats = \Config::get('laravel-photogallery::formats');

@@ -17,7 +17,8 @@
             "src/migrations",
             "src/controllers",
             "src/Itestense/LaravelPhotogallery/models",
-            "src/Itestense/LaravelPhotogallery/validators"
+            "src/Itestense/LaravelPhotogallery/validators",
+	    "src/Itestense/LaravelPhotogallery/utils"
         ],
         "psr-0": {
             "Itestense\\LaravelPhotogallery\\": "src/"

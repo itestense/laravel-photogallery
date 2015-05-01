@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'gallery.gallery.store', 'method' => 'POST', 'files' => false)) }}
+{{ Form::open(array('route' => Itestense\LaravelPhotogallery\Utils\Utils::routeprefix('gallery.store'), 'method' => 'POST', 'files' => false)) }}
         
 
     <div class="form-group">

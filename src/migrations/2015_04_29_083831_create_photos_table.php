@@ -25,6 +25,7 @@ class CreatePhotosTable extends Migration {
       $table->increments('id');
       $table->integer('gallery_id')->unsigned();
       $table->integer('photo_id')->unsigned();
+      $table->integer('prio')->default(0);
 
       $table->foreign('gallery_id')->references('id')->on('galleries');
       $table->foreign('photo_id')->references('id')->on('photos');

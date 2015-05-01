@@ -31,6 +31,35 @@ class PhotosController extends \BaseController {
       ->nest('form','laravel-photogallery::forms.create-photo');
 	}
 
+	protected function save_file($file)
+	{
+		$filename = str_random(10).time() .".". 
+			$file->getClientOriginalExtension();
+		$destination = public_path().\Config::get('laravel-photogallery::upload_dir')."/";
+		$upload = $file->move($destination, $filename);
+		$img = \Image::make($destination.$filename);
+		$formats = \Config::get('laravel-photogallery::formats');
+		foreach($formats as $name => $format){
+			$img->resize($format['w'],$format['h'],
+					function($constraint){
+          					$constraint->aspectRatio();
+        				});
+			$img->save($destination.$name.'/'.
+					$filename,$format['q']);
+		}
+		if( $upload == false )
+		{
+			return \Redirect::to('gallery.photo.create')
+       					->withInput()
+       					->withErrors($validation->errors)
+       					->with('message', 'Errori');
+      		}
+      		$photo = new Photo;
+      		$photo->name = $file->getClientOriginalName();
+      		$photo->description = $file->getClientOriginalName();
+      		$photo->path = $filename;
+		$photo->save();
+	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -43,29 +72,11 @@ class PhotosController extends \BaseController {
 		$validation = new \Itestense\LaravelPhotogallery\Validators\Photo;
 		if($validation->passes())
 		{
-      $filename = str_random(10).time() .".". \Input::file('path')->getClientOriginalExtension();
-			$destination = public_path()."/uploads/photos/";
-      $upload = \Input::file('path')->move($destination, $filename);
-      $img = \Image::make($destination.$filename);
-      $formats = \Config::get('laravel-photogallery::formats');
-      foreach($formats as $name => $format){
-        $img->resize($format['w'],$format['h'],function($constraint){
-          $constraint->aspectRatio();
-        });
-        $img->save($destination.$name.'/'.$filename,$format['q']);
-      }
-			if( $upload == false )
+			$files = \Input::file('images');
+			foreach($files as $file)
 			{
-				return \Redirect::to('gallery.photo.create')
-       			->withInput()
-       			->withErrors($validation->errors)
-       			->with('message', 'Errori');
-      }
-      $photo = new Photo;
-      $photo->name = \Input::get('name');
-      $photo->description = \Input::get('description');
-      $photo->path = $filename;
-			$photo->save();
+				$this->save_file($file);
+			}	
 			//return \Redirect::route("gallery.photo.show", array('id' => $photo->id));
 		}
 		else
