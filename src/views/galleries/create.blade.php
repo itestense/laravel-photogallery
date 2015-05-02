@@ -1,6 +1,6 @@
 @extends('laravel-photogallery::layouts.master')
 @section('content')
-<h2>Add gallery</h2>
+<h2>{{trans('laravel-photogallery::messages.addgallery')}}</h2>
 @if ($errors->any())
             <ul>
                 {{ implode('', $errors->all('<li class="error">:message</li>')) }}

@@ -1,6 +1,6 @@
 <?php
 return [
-	'route_prefix' => 'admin/gallerry',
+	'route_prefix' => 'admin/gallery',
 	'upload_dir' => '/uploads/photos',
   'formats' => [
     's1' => ['w'=>800,'h'=>null,'q'=>96],

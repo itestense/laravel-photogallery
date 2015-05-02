@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'gallery.galleries.photos.store', 'method' => 'POST', 'files' => true)) }}
+{{ Form::open(array('route' => Utils::routeprefix('galleries.photos.store'), 'method' => 'POST', 'files' => true)) }}
        {{ Form::hidden('gallery_id', $gallery->id) }} 
     <div class="form-group">
         {{ Form::label('path', 'File' . ':') }}

@@ -1,6 +1,8 @@
 <?php
 namespace Itestense\LaravelPhotogallery\Controllers;
 use Itestense\LaravelPhotogallery\Models\Gallery as Gallery;
+use Itestense\LaravelPhotogallery\Utils\Utils as Utils;
+
 class GalleriesController extends \BaseController {
 
   protected $gallery;
@@ -16,8 +18,9 @@ class GalleriesController extends \BaseController {
 	 */
 	public function index()
 	{
-    return \View::make('laravel-photogallery::galleries.index',
-      ['galleries'=>Gallery::all()]);
+    	return \View::make('laravel-photogallery::galleries.index',
+	    ['galleries'=>Gallery::all()]);
+	    //->nest('deleteform','laravel-photogallery::forms.delete-gallery');
 	}
 
 
@@ -48,7 +51,7 @@ class GalleriesController extends \BaseController {
       $g = new Gallery;
       $g->name = \Input::get('name');
       $g->save();
-      return \Redirect::route("gallery.gallery.index");
+      return \Redirect::route(Utils::routeprefix("gallery.index"));
     }
 	}
 
@@ -98,7 +101,8 @@ class GalleriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Gallery::findOrFail($id)->delete();
+		return \Redirect::route(Utils::routeprefix("gallery.index"));
 	}
 
 

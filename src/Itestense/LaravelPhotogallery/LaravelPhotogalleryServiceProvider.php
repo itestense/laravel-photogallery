@@ -31,6 +31,7 @@ class LaravelPhotogalleryServiceProvider extends ServiceProvider {
 	{
     $loader = \Illuminate\Foundation\AliasLoader::getInstance();
     $loader->alias('Image', 'Intervention\Image\Facades\Image');
+    $loader->alias('Utils', 'Itestense\LaravelPhotogallery\Utils\Utils');
 	}
 
 	/**

@@ -2,13 +2,13 @@
         
 
     <div class="form-group">
-      {{ Form::label('name', 'Nome'.':') }}
+      {{ Form::label('name', trans('laravel-photogallery::messages.name').':') }}
       {{ Form::text('name', null, array('class'=>'form-control')) }} 
     </div>
 
 
     <div class="form-group">
-        {{ Form::submit('Invia', array('class' => 'btn btn-primary')) }}
+        {{ Form::submit(trans('laravel-photogallery::messages.create'), array('class' => 'btn btn-primary')) }}
     </div>
 
 {{ Form::close() }}

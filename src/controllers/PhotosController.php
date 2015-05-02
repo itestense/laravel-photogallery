@@ -1,6 +1,7 @@
 <?php
 namespace Itestense\LaravelPhotogallery\Controllers;
 use Itestense\LaravelPhotogallery\Models\Photo as Photo;
+use Itestense\LaravelPhotogallery\Utils\Utils as Utils;
 class PhotosController extends \BaseController {
 
   protected $photo;
@@ -77,7 +78,7 @@ class PhotosController extends \BaseController {
 			{
 				$this->save_file($file);
 			}	
-			//return \Redirect::route("gallery.photo.show", array('id' => $photo->id));
+			return \Redirect::route(Utils::routeprefix("photo.index"));
 		}
 		else
 		{
