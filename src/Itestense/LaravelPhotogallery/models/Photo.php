@@ -15,5 +15,16 @@ class Photo extends \Eloquent
   {
     return self::all()->shuffle();
   }
+  public function getCompletePathAttribute()
+  {
+	 
+	  return \Config::get('laravel-photogallery::upload_dir').'/'.$this->path;
+  }
+  public function thumbnail($thumb='')
+  {
+	 if($thumb)
+		 $thumb=$thumb.'/';
+	return \Config::get('laravel-photogallery::upload_dir').'/'.$thumb.$this->path;
+  }
 
 }

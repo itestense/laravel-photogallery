@@ -1,5 +1,6 @@
 <?php
 namespace Itestense\LaravelPhotogallery\Controllers;
+use Itestense\LaravelPhotogallery\Models\Photo as Photo;
 use Itestense\LaravelPhotogallery\Models\Gallery as Gallery;
 use Itestense\LaravelPhotogallery\Utils\Utils as Utils;
 
@@ -19,7 +20,7 @@ class GalleriesController extends \BaseController {
 	public function index()
 	{
     	return \View::make('laravel-photogallery::galleries.index',
-	    ['galleries'=>Gallery::all()]);
+	    ['galleries'=>Gallery::all()->orderBy('prio')]);
 	    //->nest('deleteform','laravel-photogallery::forms.delete-gallery');
 	}
 
@@ -64,8 +65,8 @@ class GalleriesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-    //return \View::make('laravel-photogallery::galleries.show',
-    //  ['gallery'=>Gallery::findOrFail($id)]);
+    		return \View::make('laravel-photogallery::galleries.show',
+    			  ['gallery'=>Gallery::findOrFail($id)]);
 	}
 
 
@@ -77,7 +78,14 @@ class GalleriesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$gallery = Gallery::findOrFail($id);
+		//$photos = $gallery->photos(); This is the right one
+		//This is for debugging
+		$photos = Photo::all();
+		return \View::make('laravel-photogallery::galleries.edit',
+      ['gallery'=>$gallery,'photos'=>$photos])
+      ->nest('form','laravel-photogallery::forms.create-photoingallery',
+	      ['gallery'=>$gallery,'photos'=>$photos]);
 	}
 
 
@@ -89,7 +97,19 @@ class GalleriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$photos = \Input::get('photos');
+		$gallery = Gallery::findOrFail($id);
+
+		//TODO: Remove photos
+		$gallery->photos()->detach();
+		$i=0;
+		foreach($photos as $ph){
+			//Add photo
+			$gallery->photos()->attach($ph,['prio'=>$i]);
+			$i++;
+		}
+		//Save
+		$gallery->save();
 	}
 
 

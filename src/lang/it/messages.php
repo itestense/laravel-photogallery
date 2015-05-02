@@ -6,5 +6,7 @@ return [
 	'name'=>'Nome',
 	'create' => 'Crea',
 	'galleries' => 'Gallerie',
-	'delete' => 'Elimina'
+	'delete' => 'Elimina',
+	'confirmgallerydeletion'=>'Sei sicuro di voler cancellare questa libreria?',
+	'actions'=>'Azioni'
 ];

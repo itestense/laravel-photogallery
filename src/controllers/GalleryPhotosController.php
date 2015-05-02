@@ -10,15 +10,9 @@ class GalleryPhotosController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index($gallery_id)
+	public function index()
   {
-    $gallery = Gallery::findOrFail(1);
-    $photos = $gallery->photos();
-		return \View::make('laravel-photogallery::galleries.show',
-      ['gallery'=>$gallery,'photos'=>$photos])
-      ->nest('form','laravel-photogallery::forms.create-photoingallery',
-        ['gallery'=>$gallery]);
-	}
+   	}
 
 
 	/**
@@ -100,7 +94,8 @@ class GalleryPhotosController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		 
+
 	}
 
 

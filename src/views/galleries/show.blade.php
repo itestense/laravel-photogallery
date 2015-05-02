@@ -14,6 +14,4 @@
   @endforeach 
 </tbody>
 </table>
-
-{{ $form }}
 @stop
