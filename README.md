@@ -1,8 +1,14 @@
 # laravel-photogallery
 Laravel Photogallery is an administrative interface for Laravel plus some useful modules that can be used in the frontend. You can upload images on the server, obtain thumbnails having different sizes and place them into galleries with a specific order.
 
-- **Author: **Paolo Niccolò Giubelli - ITestense SNC
+- **Author:** Paolo Niccolò Giubelli - ITestense SNC
 - **Company Website:** http://www.itestense.it
+
+##Warning!
+
+This package is still in the early development stage, so please don't use it inproduction.
+Be patient for a while! :-) If you want to collaborate, you're welcome.
+
 
 ##Prerequisites
 
