@@ -8,5 +8,6 @@ return [
 	'galleries' => 'Galleries',
 	'delete' => 'Delete',
 	'confirmgallerydeletion'=>'Are you sure you want to delete this gallery?',
-	'actions'=>'Actions'
+	'actions'=>'Actions',
+	'updategallery'=>'Save gallery'
 ];

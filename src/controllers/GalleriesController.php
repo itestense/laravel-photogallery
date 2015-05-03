@@ -108,6 +108,7 @@ class GalleriesController extends \BaseController {
 			$gallery->photos()->attach($ph,['prio'=>$i]);
 			$i++;
 		}
+		echo "Added photos!";
 		//Save
 		$gallery->save();
 	}

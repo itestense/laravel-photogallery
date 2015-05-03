@@ -31,6 +31,10 @@ and run `composer update`. Then you need to register the service provider in `co
 	'Itestense\LaravelPhotogallery\LaravelPhotogalleryServiceProvider',
 	...
 	]
+##Assets
+Publish the assets with:
+
+	php artisan asset:publish itestense/laravel-photogallery
 
 ##Configuration
 Once the package is installed, publish the config file with:
