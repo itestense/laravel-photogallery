@@ -25,7 +25,7 @@ function checkdata()
 	}
 	var reqdata = {"photos":p_items}
 	var xmlhttp=new XMLHttpRequest();
-	xmlhttp.open('PUT', "{{URL::route(Utils::routeprefix('gallery.update'),['id'=>$gallery->id])}})",true);
+	xmlhttp.open('PUT', "{{URL::route(Utils::routeprefix('gallery.update'),['id'=>$gallery->id])}}",true);
 	xmlhttp.setRequestHeader("Content-type","application/json");
 	xmlhttp.send(JSON.stringify(reqdata));
 }
