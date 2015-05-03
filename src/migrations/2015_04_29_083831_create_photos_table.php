@@ -27,8 +27,8 @@ class CreatePhotosTable extends Migration {
       $table->integer('photo_id')->unsigned();
       $table->integer('prio')->default(0);
 
-      $table->foreign('gallery_id')->references('id')->on('galleries');
-      $table->foreign('photo_id')->references('id')->on('photos');
+      $table->foreign('gallery_id')->references('id')->on('galleries')->on_delete('cascade');
+      $table->foreign('photo_id')->references('id')->on('photos')->on_delete('cascade');
     });
 
 	}

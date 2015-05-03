@@ -7,7 +7,10 @@ return [
 	'create' => 'Crea',
 	'galleries' => 'Gallerie',
 	'delete' => 'Elimina',
-	'confirmgallerydeletion'=>'Sei sicuro di voler cancellare questa libreria?',
+	'edit'=>'Edit',
+	'confirmgallerydeletion'=>'Sei sicuro di voler cancellare questa galleria?',
+	'confitmphotodeletion'=>'Sei sicuro di voler cancellare questa foto?',
 	'actions'=>'Azioni',
-	'updategallery'=>'Salva le modifiche'
+	'updategallery'=>'Salva le modifiche',
+	'delete'=>'Elimina'
 ];

@@ -38,16 +38,16 @@ class PhotosController extends \BaseController {
 			$file->getClientOriginalExtension();
 		$destination = public_path().\Config::get('laravel-photogallery::upload_dir')."/";
 		$upload = $file->move($destination, $filename);
-		$img = \Image::make($destination.$filename);
-		$formats = \Config::get('laravel-photogallery::formats');
-		foreach($formats as $name => $format){
-			$img->resize($format['w'],$format['h'],
-					function($constraint){
-          					$constraint->aspectRatio();
-        				});
-			$img->save($destination.$name.'/'.
-					$filename,$format['q']);
-		}
+		//$img = \Image::make($destination.$filename);
+		//$formats = \Config::get('laravel-photogallery::formats');
+		//foreach($formats as $name => $format){
+		//	$img->resize($format['w'],$format['h'],
+		//			function($constraint){
+          	//				$constraint->aspectRatio();
+        	//			});
+		//	$img->save($destination.$name.'/'.
+		//			$filename,$format['q']);
+		//}
 		if( $upload == false )
 		{
 			return \Redirect::to('gallery.photo.create')
@@ -136,8 +136,14 @@ class PhotosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Photo::findOrFail($id)->delete();
+		return \Redirect::route(Utils::routeprefix("photo.index"));
 	}
 
+	public function search($key)
+	{
+		$photos = Photo::where('name','LIKE',"%$key%")->get();
+		return \View::make('laravel-photogallery::photos.search', ['photos'=>$photos,'key'=>$key]);
+	}
 
 }

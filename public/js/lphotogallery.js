@@ -22,6 +22,15 @@ function updategallery(updateUrl)
 	xmlhttp.onreadystatechange = ClientSideUpdate;
 	xmlhttp.send(JSON.stringify(reqdata));
 }
+
+function searchphotos(searchUrl)
+{
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.open('GET', searchUrl, true);
+	xmlhttp.setRequestHeader("Content-type","application/json");
+	xmlhttp.onreadystatechange = ClientSideUpdate;
+	xmlhttp.send();
+}
 var dragItems;
 var dropAreas = document.querySelectorAll('[droppable=true]');
 var addEvent = (function()

@@ -8,4 +8,5 @@
 <script src="/packages/itestense/laravel-photogallery/js/lphotogallery.js"></script>
 </body>
 </html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="/packages/itestense/laravel-photogallery/css/bootstrap.min.css">
+<link rel="stylesheet" href="/packages/itestense/laravel-photogallery/css/lphotogallery.css">

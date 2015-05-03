@@ -18,7 +18,9 @@
     <tr>
       <td>{{$g->id}}</td>
       <td>{{$g->name}}</td>
-      <td><a href="{{URL::route(Utils::routeprefix('gallery.edit'),['id'=>$g->id])}}">Gestisci</a>
+      <td><a class="btn btn-primary"
+	href="{{URL::route(Utils::routeprefix('gallery.edit'),['id'=>$g->id])}}">
+	{{trans('laravel-photogallery::messages.edit')}}</a>
 	@include('laravel-photogallery::forms.delete-gallery',['g'=>$g])</td>
     </tr>
   @endforeach

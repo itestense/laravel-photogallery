@@ -8,5 +8,5 @@ function delete_gallery()
 .form-inline{display:inline;}
 </style>
 {{ Form::open(['route' => [Utils::routeprefix('gallery.destroy'),$g->id], 'method'=>'DELETE','class'=>'form-inline']) }}
-{{ Form::submit(trans('laravel-photogallery::messages.delete'), ['class'=>'btn btn-primary','onclick'=>'return delete_gallery()']) }}
+{{ Form::submit(trans('laravel-photogallery::messages.delete'), ['class'=>'btn btn-danger','onclick'=>'return delete_gallery()']) }}
 {{ Form::close() }}

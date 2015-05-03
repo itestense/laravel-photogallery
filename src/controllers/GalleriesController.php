@@ -20,7 +20,7 @@ class GalleriesController extends \BaseController {
 	public function index()
 	{
     	return \View::make('laravel-photogallery::galleries.index',
-	    ['galleries'=>Gallery::all()->orderBy('prio')]);
+	    ['galleries'=>Gallery::all()]);
 	    //->nest('deleteform','laravel-photogallery::forms.delete-gallery');
 	}
 
@@ -125,6 +125,4 @@ class GalleriesController extends \BaseController {
 		Gallery::findOrFail($id)->delete();
 		return \Redirect::route(Utils::routeprefix("gallery.index"));
 	}
-
-
 }

@@ -7,7 +7,10 @@ return [
 	'create' => 'Create',
 	'galleries' => 'Galleries',
 	'delete' => 'Delete',
+	'edit'=>'Edit',
 	'confirmgallerydeletion'=>'Are you sure you want to delete this gallery?',
+	'confirmphotodeletion'=>'Are you sure you want to delete this photo?',
 	'actions'=>'Actions',
-	'updategallery'=>'Save gallery'
+	'updategallery'=>'Save gallery',
+	'delete'=>'Delete'
 ];
