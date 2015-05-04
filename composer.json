@@ -1,6 +1,7 @@
 {
     "name": "itestense/laravel-photogallery",
-    "description": "",
+    "description": "A simple plugin for creating/editing/using photogalleries in a Laravel project",
+    "license":"MIT",
     "authors": [
         {
             "name": "Paolo Niccolò Giubelli",
